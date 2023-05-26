@@ -17,7 +17,7 @@ import { useSession } from "next-auth/react";
 
 export interface BookWithAverageRating extends IBook {
   averageRating: number;
-  isRead: boolean;
+  isRead?: boolean;
 }
 
 export default function Profile() {
