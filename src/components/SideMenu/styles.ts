@@ -8,7 +8,10 @@ export const Container = styled("div", {
   padding: "2.5rem",
 
   width: 232,
-  height: 890,
+
+  maxHeight: 890,
+  height: "100%",
+
   borderRadius: "12px",
   margin: "auto 0",
   background:

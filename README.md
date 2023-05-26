@@ -65,7 +65,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 
 ## 🔗 Link do projeto
-Se quiser ver o projeto no ar, clique [aqui](https://coffe-delivery-jrs.vercel.app).
+Se quiser ver o projeto no ar, clique [aqui](https://book-wise-one.vercel.app/).
 
 ## 🚀 Como executar
 
