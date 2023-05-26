@@ -4,7 +4,6 @@ import { Container, FormError } from "./styles";
 import { TextArea } from "@/components/TextArea";
 import { Check, X } from "phosphor-react";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";

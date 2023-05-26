@@ -11,7 +11,7 @@ import { InputText } from "@/components/InputText";
 import { api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import dayjs from "dayjs";
-import { IBook, IRating, IUser } from "@/@types/models";
+import { IBook, IUser } from "@/@types/models";
 import { useState } from "react";
 import { useRouter } from "next/router";
 

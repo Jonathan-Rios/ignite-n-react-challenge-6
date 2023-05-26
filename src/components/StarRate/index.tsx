@@ -1,6 +1,5 @@
 import { Container } from "./styles";
 
-import { useState } from "react";
 import { StarButton } from "./StarButton";
 
 interface StarRateProps {

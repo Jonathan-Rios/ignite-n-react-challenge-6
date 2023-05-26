@@ -42,7 +42,13 @@
 ## 💻 Projeto
 Essa aplicação foi desenvolvida para estudos seguindo os ensinamentos da **[Rocketseat](https://www.rocketseat.com.br/)** no curso Ignite **[Ignite](https://www.rocketseat.com.br/ignite)** .
 
-Essa aplicação aborda:  
+Um projeto que lista vários livros, que é possível registrar avaliações de quais já leu, podendo dar notas e ter sua página de perfil com os dados de leitura.
+
+Essa aplicação aborda:
+- Autenticação OAuth com GitHub e Google
+- Listagem de items
+- Sistema de rating
+- Página de visitante
 
 Contendo anotações e comentários particulares servindo de consulta para novos projetos.
 
@@ -54,6 +60,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Stitches](https://stitches.dev/)
+- [NextAuth](https://next-auth.js.org/)
+- [Prisma](https://www.prisma.io/)
 
 
 ## 🔗 Link do projeto

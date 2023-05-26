@@ -4,7 +4,7 @@ import { Container, Content, IsReadBadge } from "./styles";
 import Image from "next/image";
 import { BookOpen, BookmarkSimple } from "phosphor-react";
 
-import { IBook, ICategory } from "@/@types/models";
+import { ICategory } from "@/@types/models";
 import { useExplorer } from "@/hooks/Explorer";
 import { queryClient } from "@/lib/react-query";
 
