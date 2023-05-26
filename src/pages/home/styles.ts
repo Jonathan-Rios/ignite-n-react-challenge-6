@@ -10,6 +10,7 @@ export const Principal = styled("section", {
   flexDirection: "column",
   gap: "0.75rem", // 12px
   marginBottom: "4rem",
+  width: "100%",
 
   ".any-rate": {
     fontSize: "$_16",

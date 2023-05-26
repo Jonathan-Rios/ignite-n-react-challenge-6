@@ -14,6 +14,7 @@ import { useSession } from "next-auth/react";
 interface BookDetailsProps {
   isOpen: boolean;
   onClose: () => void;
+  refreshBooks: () => void;
 }
 
 export interface BookDetailsRating {
@@ -25,7 +26,11 @@ export interface BookDetailsRating {
   user: IUser;
 }
 
-export function BookDetails({ isOpen, onClose }: BookDetailsProps) {
+export function BookDetails({
+  isOpen,
+  onClose,
+  refreshBooks,
+}: BookDetailsProps) {
   const [isRatingEnable, IsRatingEnable] = useState<boolean>(false);
 
   const { selectedBook } = useExplorer();
@@ -48,6 +53,7 @@ export function BookDetails({ isOpen, onClose }: BookDetailsProps) {
   }, []);
 
   function refreshRates() {
+    refreshBooks();
     refetch();
   }
 
@@ -85,14 +91,17 @@ export function BookDetails({ isOpen, onClose }: BookDetailsProps) {
                   />
                 )}
 
-                {ratings?.length &&
+                {!!ratings?.length ? (
                   ratings.map((rate) => {
                     if (rate.user.id === session?.user.id) {
                       return <Rate key={rate.id} rate={rate} itIsMe />;
                     } else {
                       return <Rate key={rate.id} rate={rate} />;
                     }
-                  })}
+                  })
+                ) : (
+                  <p>Nenhuma avaliação</p>
+                )}
               </section>
             </Content>
           </Dialog>

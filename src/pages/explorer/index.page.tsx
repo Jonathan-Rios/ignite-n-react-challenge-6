@@ -28,16 +28,19 @@ export default function Profile() {
   const [isBookDetailsOpen, setIsBookDetailsOpen] = useState<boolean>(false);
   const { selectedBook, setSelectedBook } = useExplorer();
 
-  const { data: books } = useQuery<BookWithAverageRating[]>(
-    ["getBooks"],
-    async () => {
-      const { data } = await api.get<BookWithAverageRating[]>(
-        `/books?user=${session?.user?.id || ""}`
-      );
+  function refreshBooks() {
+    refetchBooks();
+  }
 
-      return data;
-    }
-  );
+  const { data: books, refetch: refetchBooks } = useQuery<
+    BookWithAverageRating[]
+  >(["getBooks"], async () => {
+    const { data } = await api.get<BookWithAverageRating[]>(
+      `/books?user=${session?.user?.id || ""}`
+    );
+
+    return data;
+  });
 
   const { data: categories } = useQuery<ICategory[]>(
     ["getCategories"],
@@ -146,6 +149,7 @@ export default function Profile() {
         <BookDetails
           isOpen={isBookDetailsOpen}
           onClose={handleCloseBookDetails}
+          refreshBooks={refreshBooks}
         />
       )}
     </MainBody>

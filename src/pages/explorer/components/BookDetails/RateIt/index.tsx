@@ -37,6 +37,7 @@ export function RateIt({ onClose, refreshRates }: RateItProps) {
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
       description: "",
+      rate: -1,
     },
   });
 

@@ -3,15 +3,16 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Book {
   id          String   @id @default(uuid())
-  name        String
-  author      String
-  summary     String
+  name        String   @db.Text
+  author      String   @db.Text
+  summary     String   @db.Text
   cover_url   String
   total_pages Int
   created_at  DateTime @default(now())
@@ -39,12 +40,14 @@ model CategoriesOnBooks {
   category Category @relation(fields: [categoryId], references: [id])
 
   @@id([book_id, categoryId])
+  @@index([book_id])
+  @@index([categoryId])
 }
 
 model Rating {
   id          String   @id @default(uuid())
   rate        Float
-  description String
+  description String   @db.Text
   created_at  DateTime @default(now())
 
   book    Book   @relation(fields: [book_id], references: [id])
@@ -53,29 +56,30 @@ model Rating {
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
 
+  @@index([book_id])
+  @@index([user_id])
   @@map("ratings")
 }
 
 model Account {
-  id                String  @id @default(cuid())
+  id                String @id @default(cuid())
   userId            String
   type              String
   provider          String
   providerAccountId String
-  // refresh_token     String? @db.Text
-  // access_token      String? @db.Text
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  // id_token          String? @db.Text
-  session_state     String?
+
+  refresh_token String? @db.Text
+  access_token  String? @db.Text
+  expires_at    Int?
+  token_type    String?
+  scope         String?
+  id_token      String? @db.Text
+  session_state String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -84,11 +88,13 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
   id            String    @id @default(uuid())
-  name          String
+  name          String    @db.Text
   avatar_url    String?
   created_at    DateTime  @default(now())
   email         String?   @unique
