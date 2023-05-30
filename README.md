@@ -99,7 +99,7 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE.md) pa
 
 ## 📓 Anotações pessoais
 
-<h3>Exemplo de descrição </h3>
+<h3>Comandos utilizados</h3>
 
 ```bash
  
